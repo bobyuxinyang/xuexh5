@@ -1,9 +1,13 @@
+body {
+  background-color: red;
+}
+
 .loading-person{
 	width: 332px;
 	height: 266px;
 	background: url(../images/sprite-person.png) no-repeat 0 0;
 	background-size: auto 266px;
-	-webkit-animation: dance 1s step-end infinite;
+	-webkit-animation: dance 2s step-end infinite;
 }
 @-webkit-keyframes dance{
 	0%{  

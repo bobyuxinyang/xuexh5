@@ -1,1 +1,1 @@
-alert("GOGOGOGO")
+console.log("NICE")
