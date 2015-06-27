@@ -1,0 +1,6 @@
+{
+	"src": "../dist",
+	"dest": "qiniu:access_key=91S9KTE2t2ZaBMatRDVHLoaCJ_y3uFl1C3J-KJdY&secret_key=f_9YdY3v0y3YmyyBnoPsymySy4Te6RDbLtMKhNO1&bucket=studyx&key_prefix=dist/",
+	"deletable": 1,
+	"debug_level": 1
+}
