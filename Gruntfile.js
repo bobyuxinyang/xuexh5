@@ -11,15 +11,15 @@ module.exports = function(grunt) {
 				''
 		},
 
-		uglify: {
-			options: {
-				banner: '<%= meta.banner %>\n'
-			},
-			build: {
-				src: 'js/main.js',
-				dest: 'js/main.min.js'
-			}
-		},
+		// uglify: {
+		// 	options: {
+		// 		banner: '<%= meta.banner %>\n'
+		// 	},
+		// 	build: {
+		// 		src: 'js/main.js',
+		// 		dest: 'js/main.min.js'
+		// 	}
+		// },
 
 		// sass: {
 		// 	core: {
@@ -95,7 +95,7 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'default', [ 'css', 'js' ] );
 
 	// JS task
-	grunt.registerTask( 'js', [ 'uglify' ] );
+	grunt.registerTask( 'js', [ /*'uglify'*/ ] );
 
 	// Core framework CSS
 	// grunt.registerTask( 'css-core', [ 'autoprefixer', 'cssmin' ] );

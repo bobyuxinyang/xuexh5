@@ -2,43 +2,50 @@
   background-color: white;
 }*/
 
+.bg {
+  margin: 0 auto;
+  width: 2.535rem;
+  height: 2.202rem;
+}
 .loading-person{
   position: absolute;
-  top: 0.2rem;
-  left: 0.25rem;
-	width: 332px;
-	height: 266px;
+  top: .15rem;
+	width: 2.337rem;
+	height: 1.87rem;
 	background: url(../images/sprite-person.png) no-repeat 0 0;
-	background-size: auto 266px;
+	background-size: auto 1.87rem;
 	-webkit-animation: dance 2s step-end infinite;
 }
+
 @-webkit-keyframes dance{
 	0%{  
 		background-position: 0 0;
 	}
   16.7%{  
-  	background-position: -332px 0;
+  	background-position: -2.337rem 0;
   }
   33.4%{  
-  	background-position: -664px 0;
+  	background-position: -4.674rem 0;
   }
   50.1%{  
-  	background-position: -996px 0;
+  	background-position: -7.011rem 0;
   }
   66.8%{  
-  	background-position: -1328px 0;
+  	background-position: -9.348rem 0;
   }
   83.5%{  
-  	background-position: -1660px 0;
+  	background-position: -11.685rem 0;
   }
   100%{  
-  	background-position: -1992px 0;
+  	background-position: -14.022rem 0;
   }
 }
 
 .fonts{
-  width: 100%;
-  height: 2.7rem;
+  position: absolute;
+  width: 2.535rem;
+  height: 2.202rem;
+  top: 0;
   background: url(../images/fonts.png) no-repeat 0 0;
   background-size: 100% 100%;
   z-index: 10;
