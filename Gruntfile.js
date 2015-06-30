@@ -35,13 +35,13 @@ module.exports = function(grunt) {
 			}
 		},
 
-		cssmin: {
-			compress: {
-				files: {
-					'css/main.min.css': [ 'css/main.css' ]
-				}
-			}
-		},
+		// cssmin: {
+		// 	compress: {
+		// 		files: {
+		// 			'css/main.min.css': [ 'css/main.css' ]
+		// 		}
+		// 	}
+		// },
 
 		connect: {
 			server: {
@@ -71,10 +71,10 @@ module.exports = function(grunt) {
 				files: [ 'Gruntfile.js', 'js/main.js' ],
 				tasks: 'js'
 			},
-			css: {
-				files: [ 'css/main.css' ],
-				tasks: 'css-core'
-			},
+			// css: {
+			// 	files: [ 'css/main.css' ],
+			// 	tasks: 'css-core'
+			// },
 			html: {
 				files: [ 'index.html']
 			}
@@ -83,7 +83,7 @@ module.exports = function(grunt) {
 	});
 
 	// Dependencies
-	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
+	// grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	// grunt.loadNpmTasks( 'grunt-sass' );
@@ -98,10 +98,11 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'js', [ 'uglify' ] );
 
 	// Core framework CSS
-	grunt.registerTask( 'css-core', [ 'autoprefixer', 'cssmin' ] );
+	// grunt.registerTask( 'css-core', [ 'autoprefixer', 'cssmin' ] );
 
 	// All CSS
-	grunt.registerTask( 'css', [ 'autoprefixer', 'cssmin' ] );
+	grunt.registerTask( 'css', [ 'autoprefixer' ] );	
+	// grunt.registerTask( 'css', [ 'autoprefixer', 'cssmin' ] );
 
 	// Package presentation to archive
 	grunt.registerTask( 'package', [ 'default', 'zip' ] );

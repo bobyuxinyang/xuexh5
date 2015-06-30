@@ -1,14 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>XX</title>
-		<link rel="stylesheet" href="./css/main.min.css" type="text/css" />
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no">
+  <title>学X测试</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+	<link rel="stylesheet" href="./css/main.css" type="text/css" />
+	<script>
+    window.onload = function() {
+      document.documentElement.style.fontSize = 100*innerWidth/320 + 'px'
+      addEventListener('resize', function(){
+        document.documentElement.style.fontSize = 100*innerWidth/320 + 'px'
+      });
+      // window.App.router.navigate("welcome");
+    }
+  </script>
+  
+  <div style="display:none">
+    <img src="./images/sprite-person.png" />
+    <img src="./images/fonts.png" />
+    <img src="./images/loading.png" />
+    <img src="./images/xueba-icon.png" />
+    <img src="./images/start.png" />
+    <img src="./images/danmu1.png" />
+    <img src="./images/danmu2.png" />
+    <img src="./images/danmu3.png" />
+    <img src="./images/danmu4.png" />
+    <img src="./images/danmu5.png" />
+    <img src="./images/danmu6.png" />
+    <img src="./images/danmu7.png" />
+  </div>
 </head>
 <body>
+  <script type="text/javascript" src="./js/share/jweixin-1.0.0.js"></script>
+  <script type="text/javascript" src="scripts/share/share.js"></script>
+  <script type="text/javascript" src="./js/zepto.min.js"></script>
+  <script>
+    wx.ready(function() {
+      wx.onMenuShareTimeline({
+        title: 'XXXX',
+        link: location.href,
+        imgUrl: 'http://wechat.qiniudn.com/motherday-shareicon.png'
+      });
+      return wx.onMenuShareAppMessage({
+        title: 'XXXX',
+        desc: 'haha....',
+        link: location.href,
+        imgUrl: 'http://wechat.qiniudn.com/motherday-shareicon.png'
+      });
+    });
+  </script>
 	<script type="text/javascript" src="./js/main.min.js"></script>
-	<div class="loading-person">
-	</div>
+
+  <!-- 共同 -->
+  <div class="bg">
+    <div class="fonts"></div>
+    <div class="loading-person"></div>
+  </div>
+  <!-- loading页 -->
+  <div class="loading-page">
+    <div class="loading"><img class="loading-icon" src="./images/loading.png"></div>
+    <div class="loading"><img class="xueba-icon" src="./images/xueba-icon.png"></div>
+  </div>
+  <!-- 首页 -->
+  <div class="home-page" style="display:none;">
+    <div class="start-pos"><a class="start"></a></div>
+    <div class="danmu">
+      <div class="danmu1"></div>
+      <div class="danmu2"></div>
+      <div class="danmu3"></div>
+      <div class="danmu4"></div>
+      <div class="danmu5"></div>
+      <div class="danmu6"></div>
+      <div class="danmu7"></div>
+    </div>
+  </div>
 </body>
 </html>
