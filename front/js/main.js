@@ -68,9 +68,15 @@
         $answerWrong.show();
       }
       this.setShareInfo();
-      $continue.show();
       $answerTip = $(".answer-tip" + this.status);
-      return $answerTip.show();
+      $answerTip.show();
+      $continue.show();
+      $(".continue-page").addClass('bounce-in');
+      return setTimeout((function(_this) {
+        return function() {
+          return $(".continue-page").removeClass('bounce-in');
+        };
+      })(this), 700);
     },
     currentAnswer: function(answer) {
       $(".select-" + this.status + "-" + answer).addClass('big-ani');
@@ -154,7 +160,7 @@
   });
 
   $(function() {
-    var $again, $answer1, $chooseA, $chooseB, $chooseC, $chooseD, $con, $continuebtn, $home, $load, $loadingCount, $shareBtn, $shareTip, $start, loading;
+    var $again, $answer1, $bg, $chooseA, $chooseB, $chooseC, $chooseD, $con, $continuebtn, $home, $load, $loadingCount, $shareBtn, $shareTip, $start, clickTimer, loading;
     $load = $(".loading-page");
     $home = $(".home-page");
     $start = $('.start-pos');
@@ -169,6 +175,10 @@
     $shareBtn = $('.share-btn');
     $shareTip = $('.share-tip');
     $loadingCount = $('.loading-count');
+    $start = $('.start');
+    $bg = $('.bg');
+    $start.hide();
+    clickTimer = 0;
     loading = function() {
       var count, timer;
       count = 0;
@@ -191,6 +201,12 @@
         return danMu();
       };
     })(this), 3500);
+    setTimeout((function(_this) {
+      return function() {
+        $start.show();
+        return $start.addClass('start-ani');
+      };
+    })(this), 10000);
     $start.on('click', function() {
       $home.hide();
       $answer1.show();
@@ -209,35 +225,44 @@
       return Game.currentAnswer("d");
     });
     $continuebtn.on('click', function() {
-      var $shareResult, index;
-      $('.continue-page').hide();
+      $('.continue-page').addClass('bounce-out');
       $(".answer" + Game.status).hide();
-      $(".answer-tip" + Game.status).hide();
-      $('.answer-right').hide();
-      $('.answer-wrong').hide();
-      Game.status += 1;
-      $(".answer" + Game.status).show();
-      if (Game.status === 11) {
-        index = Game.gameScore / 10;
-        $('.share-page').show();
-        $shareResult = $(".share-result-" + index);
-        return $shareResult.show();
-      }
+      return setTimeout((function(_this) {
+        return function() {
+          var $shareResult, index;
+          $('.continue-page').hide();
+          $(".answer-tip" + Game.status).hide();
+          $('.answer-right').hide();
+          $('.answer-wrong').hide();
+          $(".continue-page").removeClass('bounce-out');
+          Game.status += 1;
+          $(".answer" + Game.status).show();
+          if (Game.status === 11) {
+            index = Game.gameScore / 10;
+            $('.share-page').show();
+            $shareResult = $(".share-result-" + index);
+            return $shareResult.show();
+          }
+        };
+      })(this), 500);
     });
     $again.on('click', function() {
       var index;
       $('.share-page').hide();
+      $('.share-tip').hide();
+      $bg.show();
       index = Game.gameScore / 10;
       $(".share-result-" + index).hide();
       return Game.reset();
     });
-    $shareBtn.on('click', function() {
-      $('.share-tip').show();
-      return $('.share-page').hide();
-    });
-    return $shareTip.on('click', function() {
-      $('.share-tip').hide();
-      return $('.share-page').show();
+    return $shareBtn.on('click', function() {
+      $shareTip.show();
+      $bg.hide();
+      clickTimer += 1;
+      if (clickTimer % 2 === 0) {
+        $bg.show();
+        return $shareTip.hide();
+      }
     });
   });
 
