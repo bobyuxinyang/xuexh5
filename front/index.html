@@ -23,11 +23,10 @@
   </script>
   
   <div style="display:none">
-    <img src="./images/sprite-person.png" />
     <img src="./images/fonts.png" />
-    <img src="./images/loading.png" />
+    <img src="./images/loading.gif" />
     <img src="./images/xueba-icon.png" />
-    <img src="./images/start.png" />
+    <img src="./images/start-btn.png" />
     <img src="./images/danmu1.png" />
     <img src="./images/danmu2.png" />
     <img src="./images/danmu3.png" />
@@ -35,27 +34,102 @@
     <img src="./images/danmu5.png" />
     <img src="./images/danmu6.png" />
     <img src="./images/danmu7.png" />
+
+    <img src="./images/question-1.png">
+    <img src="./images/question-2.png">
+    <img src="./images/question-3.png">
+    <img src="./images/question-4.png">
+    <img src="./images/question-5.png">
+    <img src="./images/question-6.png">
+    <img src="./images/question-7.png">
+    <img src="./images/question-8.png">
+    <img src="./images/question-9.png">
+    <img src="./images/question-10.png">
+
+    <img src="./images/right-answer-1.png">
+    <img src="./images/right-answer-2.png">
+    <img src="./images/right-answer-3.png">
+    <img src="./images/right-answer-4.png">
+    <img src="./images/right-answer-5.png">
+    <img src="./images/right-answer-6.png">
+    <img src="./images/right-answer-7.png">
+    <img src="./images/right-answer-8.png">
+    <img src="./images/right-answer-9.png">
+    <img src="./images/right-answer-10.png">
+
+    <img src="./images/answer-right.png">
+    <img src="./images/answer-wrong.png">
+    <img src="./images/bg.png">
+    <img src="./images/continue.png">
+
+    <img src="./images/select-1-a.png">
+    <img src="./images/select-1-b.png">
+    <img src="./images/select-1-c.png">
+
+    <img src="./images/select-2-a.png">
+    <img src="./images/select-2-b.png">
+    <img src="./images/select-2-c.png">
+
+    <img src="./images/select-3-a.png">
+    <img src="./images/select-3-b.png">
+    <img src="./images/select-3-c.png">
+    <img src="./images/select-3-d.png">
+
+    <img src="./images/select-4-a.png">
+    <img src="./images/select-4-b.png">
+    <img src="./images/select-4-c.png">
+    <img src="./images/select-4-d.png">
+
+    <img src="./images/select-5-a.png">
+    <img src="./images/select-5-b.png">
+    <img src="./images/select-5-c.png">
+    <img src="./images/select-5-d.png">
+
+    <img src="./images/select-6-a.png">
+    <img src="./images/select-6-b.png">
+    <img src="./images/select-6-c.png">
+    <img src="./images/select-6-d.png">
+
+    <img src="./images/select-7-a.png">
+    <img src="./images/select-7-b.png">
+    <img src="./images/select-7-c.png">
+    <img src="./images/select-7-d.png">
+
+    <img src="./images/select-8-a.png">
+    <img src="./images/select-8-b.png">
+    <img src="./images/select-8-c.png">
+    <img src="./images/select-8-d.png">
+
+    <img src="./images/select-9-a.png">
+    <img src="./images/select-9-b.png">
+    <img src="./images/select-9-c.png">
+    <img src="./images/select-9-d.png">
+
+    <img src="./images/select-10-a.png">
+    <img src="./images/select-10-b.png">
+    <img src="./images/select-10-c.png">
+    <img src="./images/select-10-d.png">
+
+    <img src="./images/0-score.png"/>
+    <img src="./images/10-score.png"/>
+    <img src="./images/20-score.png"/>
+    <img src="./images/30-score.png"/>
+    <img src="./images/40-score.png"/>
+    <img src="./images/50-score.png"/>
+    <img src="./images/60-score.png"/>
+    <img src="./images/70-score.png"/>
+    <img src="./images/80-score.png"/>
+    <img src="./images/90-score.png"/>
+    <img src="./images/100-score.png"/>
+    <img src="./images/play-again.png">
+    <img src="./images/share-btn.png">
+    <img src="./images/share.jpg">
   </div>
 </head>
 <body>
-  <script type="text/javascript" src="./js/share/jweixin-1.0.0.js"></script>
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
   <script type="text/javascript" src="scripts/share/share.js"></script>
   <script type="text/javascript" src="./js/zepto.min.js"></script>
-  <script>
-    wx.ready(function() {
-      wx.onMenuShareTimeline({
-        title: 'XXXX',
-        link: location.href,
-        imgUrl: 'http://wechat.qiniudn.com/motherday-shareicon.png'
-      });
-      return wx.onMenuShareAppMessage({
-        title: 'XXXX',
-        desc: 'haha....',
-        link: location.href,
-        imgUrl: 'http://wechat.qiniudn.com/motherday-shareicon.png'
-      });
-    });
-  </script>
 	<script type="text/javascript" src="./js/main.js"></script>
 
   <!-- 共同 -->
@@ -64,12 +138,17 @@
     <div class="loading-person"></div>
   </div>
   <!-- loading页 -->
-  <div class="loading-page">
-    <div class="loading"><img class="loading-icon" src="./images/loading.png"></div>
-    <div class="loading"><img class="xueba-icon" src="./images/xueba-icon.png"></div>
+  <div class="loading-page" style="overflow:hidden;">
+    <!-- <div><h6 class="load-num"></h6>%</div> -->
+    <div class="load">
+      <a class="loading-text"></a>
+      <span class="loading-count"></span><span class="percent">%</span>
+      <div class="loading"></div>
+    </div>
+    <div class="icon"><a class="loading-icon"></a></div>
   </div>
   <!-- 首页 -->
-  <div class="home-page" style="display:none;">
+  <div class="home-page" style="overflow:hidden;">
     <div class="start-pos"><a class="start"></a></div>
     <div class="danmu">
       <div class="danmu1"></div>
@@ -81,5 +160,140 @@
       <div class="danmu7"></div>
     </div>
   </div>
+  
+  <!-- 答题页1 -->
+  <div class="answer1">
+    <div class="question1"></div>
+    <div class="select-1">
+      <div class="select-1-a chooseA"></div>
+      <div class="select-1-b chooseB"></div>
+      <div class="select-1-c chooseC"></div>
+    </div>
+  </div>
+  <!-- 答题页2 -->
+  <div class="answer2">
+    <div class="question2"></div>
+    <div class="select-2">
+      <div class="select-2-a chooseA"></div>
+      <div class="select-2-b chooseB"></div>
+      <div class="select-2-c chooseC"></div>
+    </div>
+  </div>
+  <!-- 答题页3 -->
+  <div class="answer3">
+    <div class="question3"></div>
+    <div class="select-3">
+      <div class="select-3-a chooseA"></div>
+      <div class="select-3-b chooseB"></div>
+      <div class="select-3-c chooseC"></div>
+      <div class="select-3-d chooseD"></div>
+    </div>
+  </div>
+  <!-- 答题页4 -->
+  <div class="answer4">
+    <div class="question4"></div>
+    <div class="select-4">
+      <div class="select-4-a chooseA"></div>
+      <div class="select-4-b chooseB"></div>
+      <div class="select-4-c chooseC"></div>
+      <div class="select-4-d chooseD"></div>
+    </div>
+  </div>
+  <!-- 答题页5 -->
+  <div class="answer5">
+    <div class="question5"></div>
+    <div class="select-5">
+      <div class="select-5-a chooseA"></div>
+      <div class="select-5-b chooseB"></div>
+      <div class="select-5-c chooseC"></div>
+      <div class="select-5-d chooseD"></div>
+    </div>
+  </div>
+  <!-- 答题页6 -->
+  <div class="answer6">
+    <div class="question6"></div>
+    <div class="select-6">
+      <div class="select-6-a chooseA"></div>
+      <div class="select-6-b chooseB"></div>
+      <div class="select-6-c chooseC"></div>
+      <div class="select-6-d chooseD"></div>
+    </div>
+  </div>
+  <!-- 答题页7 -->
+  <div class="answer7">
+    <div class="question7"></div>
+    <div class="select-7">
+      <div class="select-7-a chooseA"></div>
+      <div class="select-7-b chooseB"></div>
+      <div class="select-7-c chooseC"></div>
+      <div class="select-7-d chooseD"></div>
+    </div>
+  </div>
+  <!-- 答题页8 -->
+  <div class="answer8" >
+    <div class="question8"></div>
+    <div class="select-8">
+      <div class="select-8-a chooseA"></div>
+      <div class="select-8-b chooseB"></div>
+      <div class="select-8-c chooseC"></div>
+      <div class="select-8-d chooseD"></div>
+    </div>
+  </div>
+  <!-- 答题页9 -->
+  <div class="answer9">
+    <div class="question9"></div>
+    <div class="select-9">
+      <div class="select-9-a chooseA"></div>
+      <div class="select-9-b chooseB"></div>
+      <div class="select-9-c chooseC"></div>
+      <div class="select-9-d chooseD"></div>
+    </div>
+  </div>
+  <!-- 答题页10 -->
+  <div class="answer10">
+    <div class="question10"></div>
+    <div class="select-10">
+      <div class="select-10-a chooseA"></div>
+      <div class="select-10-b chooseB"></div>
+      <div class="select-10-c chooseC"></div>
+      <div class="select-10-d chooseD"></div>
+    </div>
+  </div>
+  <!-- 继续提示页 -->
+  <div class="continue-page" style="display:none">
+    <div class="answer-right"></div>
+    <div class="answer-wrong"></div>
+    <div class="answer-tip1"></div>
+    <div class="answer-tip2"></div>
+    <div class="answer-tip3"></div>
+    <div class="answer-tip4"></div>
+    <div class="answer-tip5"></div>
+    <div class="answer-tip6"></div>
+    <div class="answer-tip7"></div>
+    <div class="answer-tip8"></div>
+    <div class="answer-tip9"></div>
+    <div class="answer-tip10" ></div>
+    <div class="center"><a class="continue-btn"></a></div>
+  </div>
+  <!-- 分享页 -->
+  <div class="share-page" style="display:none">
+    <div class="share-result-0"></div>
+    <div class="share-result-1"></div>
+    <div class="share-result-2"></div>
+    <div class="share-result-3"></div>
+    <div class="share-result-4"></div>
+    <div class="share-result-5"></div>
+    <div class="share-result-6"></div>
+    <div class="share-result-7"></div>
+    <div class="share-result-8"></div>
+    <div class="share-result-9"></div>
+    <div class="share-result-10"></div>
+    <div class="select-area">
+      <div class="play-again"></div>
+      <div class="share-btn"></div>
+    </div>
+  </div>
+  <!-- 分享提示 -->
+  <div class="share-tip"></div>
 </body>
 </html>
