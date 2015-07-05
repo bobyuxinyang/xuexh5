@@ -1,12 +1,8 @@
 var express = require('express')
 var router = express.Router()
 
-require('./orange.js')(router)
-require('./admin.js')(router)
-require('./common.js')(router)
+var common = require('../controllers/common')
 
-router.get('/', function(req, res, next) {
-  res.render('index', { title: '我是你爸爸' });
-})
+router.get('/wechat/jsconfig', common.wechatJsConfig)
 
 module.exports = router

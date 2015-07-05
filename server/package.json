@@ -4,6 +4,8 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "async": "^1.3.0",
+    "body-parser": "^1.13.1",
     "express": "^4.13.0",
     "superagent": "^1.2.0",
     "wechat-api": "^1.9.3",
