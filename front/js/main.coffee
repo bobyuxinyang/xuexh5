@@ -48,9 +48,21 @@ Game =
     else
       $answerWrong.show()
     @setShareInfo()
-    $continue.show() 
     $answerTip = $(".answer-tip#{@status}")
     $answerTip.show()
+    #todo
+    $continue.show()
+    $(".continue-page").addClass('bounce-in') 
+    # setTimeout =>
+      
+    #   console.log "addClass bounceInDown"
+    # , 200
+
+    setTimeout =>
+      $(".continue-page").removeClass('bounce-in') 
+    , 700
+
+
 
   currentAnswer: (answer)->
     $(".select-#{@status}-#{answer}").addClass('big-ani')
@@ -129,6 +141,10 @@ $( ->
   $shareBtn = $('.share-btn')
   $shareTip = $('.share-tip')
   $loadingCount = $('.loading-count')
+  $start = $('.start')
+  $bg = $('.bg')
+  $start.hide()
+  clickTimer = 0
 
   loading = ->
     count = 0
@@ -146,6 +162,11 @@ $( ->
     setTop()
     danMu()
   , 3500
+
+  setTimeout =>
+    $start.show()
+    $start.addClass('start-ani')
+  , 10000
 
   $start.on 'click', ->
     $home.hide()
@@ -165,32 +186,38 @@ $( ->
     Game.currentAnswer "d"
     
   $continuebtn.on 'click', ->
-    $('.continue-page').hide()
+    $('.continue-page').addClass('bounce-out')
     $(".answer#{Game.status}").hide()
-    $(".answer-tip#{Game.status}").hide()
-    $('.answer-right').hide()
-    $('.answer-wrong').hide()
-    Game.status += 1
-    $(".answer#{Game.status}").show()
-    if Game.status is 11
-      index = Game.gameScore/10
-      $('.share-page').show()
-      $shareResult = $(".share-result-#{index}")
-      $shareResult.show()
-
+    
+    setTimeout =>
+      $('.continue-page').hide()
+      $(".answer-tip#{Game.status}").hide()
+      $('.answer-right').hide()
+      $('.answer-wrong').hide()
+      $(".continue-page").removeClass('bounce-out') 
+      Game.status += 1
+      $(".answer#{Game.status}").show()
+      if Game.status is 11
+        index = Game.gameScore/10
+        $('.share-page').show()
+        $shareResult = $(".share-result-#{index}")
+        $shareResult.show()
+    , 500
+    
   $again.on 'click', ->
     $('.share-page').hide()
+    $('.share-tip').hide()
+    $bg.show()
     index = Game.gameScore/10
     $(".share-result-#{index}").hide()
     Game.reset()
 
   $shareBtn.on 'click', ->
-    $('.share-tip').show()
-    $('.share-page').hide()
-
-  $shareTip.on 'click', ->
-    $('.share-tip').hide()
-    $('.share-page').show()
-
+    $shareTip.show()
+    $bg.hide()
+    clickTimer += 1
+    if clickTimer % 2 is 0
+      $bg.show()
+      $shareTip.hide() 
 )
 

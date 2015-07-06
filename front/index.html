@@ -12,6 +12,7 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico"/>
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 	<link rel="stylesheet" href="./css/main.css" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="./css/animate.css">
 	<script>
     window.onload = function() {
       document.documentElement.style.fontSize = 100*innerWidth/320 + 'px'
@@ -123,12 +124,13 @@
     <img src="./images/100-score.png"/>
     <img src="./images/play-again.png">
     <img src="./images/share-btn.png">
-    <img src="./images/share.jpg">
+    <!-- <img src="./images/share.jpg"> -->
+    <img src="./images/share-per.png">
+    <img src="./images/share-text.png">
   </div>
 </head>
 <body>
   <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-  <script type="text/javascript" src="scripts/share/share.js"></script>
   <script type="text/javascript" src="./js/zepto.min.js"></script>
 	<script type="text/javascript" src="./js/main.js"></script>
 
@@ -149,6 +151,7 @@
   </div>
   <!-- 首页 -->
   <div class="home-page" style="overflow:hidden;">
+    <!-- <h1 class="animated infinite bounce">Example</h1> -->
     <div class="start-pos"><a class="start"></a></div>
     <div class="danmu">
       <div class="danmu1"></div>
@@ -294,6 +297,9 @@
     </div>
   </div>
   <!-- 分享提示 -->
-  <div class="share-tip"></div>
+  <div class="share-tip">
+    <div class="share-per"></div>
+    <div class="share-text"></div>
+  </div>
 </body>
 </html>
