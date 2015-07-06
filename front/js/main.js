@@ -14,18 +14,17 @@
   };
 
   danMu = function() {
-    var count, horizontalArray, timer;
+    var array, horizontalArray, i, j, move, results;
     horizontalArray = getRandom();
-    count = 0;
-    return timer = setInterval((function(_this) {
-      return function() {
-        $(".danmu" + horizontalArray[count]).addClass("move");
-        if (count === 6) {
-          clearInterval(timer);
-        }
-        return count += 1;
-      };
-    })(this), 500);
+    move = ["0", "1", "2", "3", "4", "1", "0", "3"];
+    array = move.sort(function() {
+      return 0.5 - Math.random();
+    });
+    results = [];
+    for (i = j = 0; j < 7; i = ++j) {
+      results.push($(".danmu" + horizontalArray[i]).addClass("move" + array[i]));
+    }
+    return results;
   };
 
   setTop = function() {
@@ -52,9 +51,7 @@
       var currentAnswer;
       this.gameScore = 0;
       this.status = 1;
-      currentAnswer = "";
-      $('.home-page').show();
-      return setTop();
+      return currentAnswer = "";
     },
     GameResult: function(index, answer) {
       var $answerRight, $answerTip, $answerWrong, $continue;
@@ -160,7 +157,7 @@
   });
 
   $(function() {
-    var $again, $answer1, $bg, $chooseA, $chooseB, $chooseC, $chooseD, $con, $continuebtn, $home, $load, $loadingCount, $shareBtn, $shareTip, $start, clickTimer, loading;
+    var $again, $answer1, $bg, $chooseA, $chooseB, $chooseC, $chooseD, $con, $continuebtn, $downloadBtn, $home, $load, $loadingCount, $shareBtn, $shareTip, $start, clickTimer, init, loading;
     $load = $(".loading-page");
     $home = $(".home-page");
     $start = $('.start-pos');
@@ -177,6 +174,7 @@
     $loadingCount = $('.loading-count');
     $start = $('.start');
     $bg = $('.bg');
+    $downloadBtn = $('.download');
     $start.hide();
     clickTimer = 0;
     loading = function() {
@@ -192,21 +190,24 @@
         };
       })(this), 25);
     };
-    loading();
-    setTimeout((function(_this) {
-      return function() {
-        $load.hide();
-        $home.show();
-        setTop();
-        return danMu();
-      };
-    })(this), 3500);
-    setTimeout((function(_this) {
-      return function() {
-        $start.show();
-        return $start.addClass('start-ani');
-      };
-    })(this), 10000);
+    init = function() {
+      loading();
+      setTimeout((function(_this) {
+        return function() {
+          $load.hide();
+          $home.show();
+          setTop();
+          return danMu();
+        };
+      })(this), 1500);
+      return setTimeout((function(_this) {
+        return function() {
+          $start.show();
+          return $start.addClass('start-ani');
+        };
+      })(this), 4000);
+    };
+    init();
     $start.on('click', function() {
       $home.hide();
       $answer1.show();
@@ -240,6 +241,7 @@
           if (Game.status === 11) {
             index = Game.gameScore / 10;
             $('.share-page').show();
+            $('.select-area').show();
             $shareResult = $(".share-result-" + index);
             return $shareResult.show();
           }
@@ -249,20 +251,27 @@
     $again.on('click', function() {
       var index;
       $('.share-page').hide();
+      $('.select-area').hide();
       $('.share-tip').hide();
       $bg.show();
       index = Game.gameScore / 10;
       $(".share-result-" + index).hide();
-      return Game.reset();
+      Game.reset();
+      $load.show();
+      return init();
     });
-    return $shareBtn.on('click', function() {
-      $shareTip.show();
-      $bg.hide();
-      clickTimer += 1;
-      if (clickTimer % 2 === 0) {
-        $bg.show();
-        return $shareTip.hide();
-      }
+    $shareBtn.on('click', function() {
+      $('.share-tip').show();
+      $('.share-page').hide();
+      return $('.select-area').hide();
+    });
+    $shareTip.on('click', function() {
+      $('.share-tip').hide();
+      $('.share-page').show();
+      return $('.select-area').show();
+    });
+    return $downloadBtn.on('click', function() {
+      return location.href = "http://android.myapp.com/myapp/detail.htm?apkName=com.wenba.bangbang";
     });
   });
 

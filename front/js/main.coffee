@@ -8,13 +8,11 @@ getRandom = ->
 
 danMu = ->
   horizontalArray = getRandom() #水平随机
-  # randomTime = Math.floor(Math.random()*2000+1000) #1000~2000随机数
-  count = 0
-  timer = setInterval =>
-    $(".danmu#{horizontalArray[count]}").addClass("move")
-    clearInterval(timer) if count is 6
-    count += 1
-  , 500
+  move = ["0", "1", "2", "3", "4", "1", "0", "3"]
+  array = move.sort ->
+    0.5 -Math.random()
+  for i in [0...7]
+    $(".danmu#{horizontalArray[i]}").addClass("move#{array[i]}")
 
 setTop = ->
   top = ["2.8", "3.2", "3.4", "3.6", "3.9", "4.1", "4.5"]
@@ -35,8 +33,8 @@ Game =
     @gameScore = 0
     @status = 1
     currentAnswer = ""
-    $('.home-page').show()
-    setTop()
+    # $('.home-page').show()
+    # setTop()
 
   GameResult : (index, answer)-> 
     $continue = $('.continue-page')
@@ -50,19 +48,12 @@ Game =
     @setShareInfo()
     $answerTip = $(".answer-tip#{@status}")
     $answerTip.show()
-    #todo
     $continue.show()
     $(".continue-page").addClass('bounce-in') 
-    # setTimeout =>
-      
-    #   console.log "addClass bounceInDown"
-    # , 200
 
     setTimeout =>
       $(".continue-page").removeClass('bounce-in') 
     , 700
-
-
 
   currentAnswer: (answer)->
     $(".select-#{@status}-#{answer}").addClass('big-ani')
@@ -143,6 +134,7 @@ $( ->
   $loadingCount = $('.loading-count')
   $start = $('.start')
   $bg = $('.bg')
+  $downloadBtn = $('.download')
   $start.hide()
   clickTimer = 0
 
@@ -154,19 +146,21 @@ $( ->
       clearInterval(timer) if count is 100
     , 25
 
-  loading()
+  init = ->
+    loading()
+    setTimeout =>
+      $load.hide()
+      $home.show()
+      setTop()
+      danMu()
+    , 1500
 
-  setTimeout =>
-    $load.hide()
-    $home.show()
-    setTop()
-    danMu()
-  , 3500
+    setTimeout =>
+      $start.show()
+      $start.addClass('start-ani')
+    , 4000
 
-  setTimeout =>
-    $start.show()
-    $start.addClass('start-ani')
-  , 10000
+  init()
 
   $start.on 'click', ->
     $home.hide()
@@ -200,24 +194,33 @@ $( ->
       if Game.status is 11
         index = Game.gameScore/10
         $('.share-page').show()
+        $('.select-area').show()
         $shareResult = $(".share-result-#{index}")
         $shareResult.show()
     , 500
     
   $again.on 'click', ->
     $('.share-page').hide()
+    $('.select-area').hide()
     $('.share-tip').hide()
     $bg.show()
     index = Game.gameScore/10
     $(".share-result-#{index}").hide()
     Game.reset()
+    $load.show()
+    init()
 
   $shareBtn.on 'click', ->
-    $shareTip.show()
-    $bg.hide()
-    clickTimer += 1
-    if clickTimer % 2 is 0
-      $bg.show()
-      $shareTip.hide() 
+    $('.share-tip').show()
+    $('.share-page').hide()
+    $('.select-area').hide()
+
+  $shareTip.on 'click', ->
+    $('.share-tip').hide()
+    $('.share-page').show()
+    $('.select-area').show()
+
+  $downloadBtn.on 'click', ->
+    location.href = "http://android.myapp.com/myapp/detail.htm?apkName=com.wenba.bangbang"
 )
 

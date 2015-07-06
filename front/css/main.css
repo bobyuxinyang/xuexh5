@@ -62,8 +62,9 @@ body {
   position: absolute;
   text-align: center;
   width: 100%;
-  /*height: 1rem;*/
   bottom: 1.5rem;
+  left: 0;
+  right: 0;
 }
 .loading-text{
   display:inline-block;
@@ -74,7 +75,7 @@ body {
   margin-right: -0.15rem;
 }
 .loading-count,.percent{
-  font-size: 0.15rem;
+  font-size: 0.12rem;
 }
 .loading{
   background: url(../images/loading.gif) no-repeat 0 0;
@@ -89,12 +90,25 @@ body {
   bottom: 0.5rem;
   width: 100%;
   height: 1rem;
+  left: 0;
+  right: 0;
+}
+.xueba{
+  margin-left: 0.2rem;
+}
+.zhuangx{
+  display: block;
+  background: url(../images/loading-zhuangX.png) no-repeat 0 0;
+  background-size: 100% 100%;
+  width: 1.04rem;
+  height: 0.425rem;
+  margin: 0.1rem auto 0.3rem auto;
 }
 .loading-icon{
-  display:inline-block;
+  display:block;
   background: url(../images/xueba-icon.png) no-repeat 0 0;
-  width: 1.52rem;
-  height: 0.405rem;
+  width: 0.69rem;
+  height: 0.21rem;
   background-size: 100% 100%;
   margin: 0.1rem auto;
 }
@@ -188,21 +202,34 @@ body {
   height: 0.105rem;
   background-size: 100% 100%;
 }
-.move{
-  -webkit-animation: piao 9s linear infinite;
+.move0{
+  -webkit-animation: piao 7s linear infinite;
 }
+.move1{
+  -webkit-animation: piao 4.5s linear infinite;
+}
+.move2{
+  -webkit-animation: piao 5s linear infinite;
+}
+.move3{
+  -webkit-animation: piao 4s linear infinite;
+}
+.move4{
+  -webkit-animation: piao 6s linear infinite;
+}
+
 @-webkit-keyframes piao{
   0%{
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
   }
   100%{
-    -webkit-transform: translate3d(-12rem, 0, 0);
-            transform: translate3d(-12rem, 0, 0);
+    -webkit-transform: translate3d(-9rem, 0, 0);
+            transform: translate3d(-9rem, 0, 0);
   }
 }
 .big-ani{
-  -webkit-animation: big 0.4s linear 1;
+  -webkit-animation: big 0.2s linear 1;
 }
 @-webkit-keyframes big{
   from{
@@ -846,32 +873,38 @@ body {
 /*分享页*/
 .share-page{
   width: 100%;
-  height: 1.9rem;
-  margin: 0.2rem auto;
+  height: 1.5rem;
+  margin: 0.1rem auto;
   position: absolute;
-  bottom: 0.3rem;
   left: 0;
+  bottom: 0.6rem;
 }
 .select-area{
-  margin-top: 0.2rem;
-  height: 0.5rem;
+  height: 1rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0.2rem;
+  left: 0.25rem;
 }
 .play-again{
-  float: left;
+  display: inline-block;
   background: url(../images/play-again.png) no-repeat 0 0;
   width: 0.71rem;
   height: 0.265rem;
-  margin-top: 0.05rem;
-  margin-left: 0.4rem;
   background-size: 100% 100%;
 }
+.download{
+  display: inline-block;
+  background: url(../images/download-btn.png) no-repeat 0 0;
+  background-size: 100% 100%;
+  width: 0.715rem;
+  height: 0.265rem;
+}
 .share-btn{
-  float: right;
+  display: inline-block;
   background: url(../images/share-btn.png) no-repeat 0 0;
   width: 0.71rem;
   height: 0.265rem;
-  margin-top: 0.05rem;
-  margin-right: 0.4rem;
   background-size: 100% 100%;
 } 
 .share-result-0, .share-result-1, .share-result-2, .share-result-3, .share-result-4, .share-result-5, .share-result-6, .share-result-7, .share-result-8, .share-result-9, .share-result-10{
@@ -880,102 +913,90 @@ body {
 
 .share-result-0{
   background: url(../images/0-score.png) no-repeat 0 0;
-  width: 2.245rem;
-  height: 1.095rem;
+  width: 2.694rem;
+  height: 1.314rem;
   background-size: 100% 100%;
   margin: 0.1rem auto;
 }
 .share-result-1{
   background: url(../images/10-score.png) no-repeat 0 0;
-  width: 1.825rem;
-  height: 1.09rem;
+  width: 2.19rem;
+  height: 1.308rem;
   background-size: 100% 100%;
   margin: 0.1rem auto;
 }
 .share-result-2{
   background: url(../images/20-score.png) no-repeat 0 0;
-  width: 2.085rem;
-  height: 1.09rem;
+  width: 2.502rem;
+  height: 1.308rem;
   background-size: 100% 100%;
   margin: 0.1rem auto;
 }
 .share-result-3{
   background: url(../images/30-score.png) no-repeat 0 0;
-  width: 2rem;
-  height: 1.09rem;
+  width: 2.4rem;
+  height: 1.308rem;
   background-size: 100% 100%;
   margin: 0.1rem auto;
 }
 .share-result-4{
   background: url(../images/40-score.png) no-repeat 0 0;
-  width: 2.995rem;
-  height: 1.09rem;
+  width: 3.145rem;
+  height: 1.15rem;
   background-size: 100% 100%;
   margin: 0.1rem auto;
 }
 .share-result-5{
   background: url(../images/50-score.png) no-repeat 0 0;
-  width: 2.9rem;
-  height: 1.09rem;
+  width: 3.19rem;
+  height: 1.12rem;
   background-size: 100% 100%;
   margin: 0.1rem auto;
 }
 .share-result-6{
   background: url(../images/60-score.png) no-repeat 0 0;
-  width: 1.645rem;
-  height: 1.09rem;
+  width: 1.974rem;
+  height: 1.308rem;
   background-size: 100% 100%;
   margin: 0.1rem auto;
 }
 .share-result-7{
   background: url(../images/70-score.png) no-repeat 0 0;
-  width: 2.275rem;
-  height: 1.095rem;
+  width: 2.73rem;
+  height: 1.314rem;
   background-size: 100% 100%;
   margin: 0.1rem auto;
 }
 .share-result-8{
   background: url(../images/80-score.png) no-repeat 0 0;
-  width: 2.38rem;
-  height: 1.095rem;
+  width: 2.856rem;
+  height: 1.314rem;
   background-size: 100% 100%;
   margin: 0.1rem auto;
 }
 .share-result-9{
   background: url(../images/90-score.png) no-repeat 0 0;
-  width: 2.46rem;
-  height: 1.09rem;
+  width: 2.952rem;
+  height: 1.308rem;
   background-size: 100% 100%;
   margin: 0.1rem auto;
 }
 .share-result-10{
   background: url(../images/100-score.png) no-repeat 0 0;
-  width: 2.385rem;
-  height: 1.1rem;
+  width: 2.862rem;
+  height: 1.32rem;
   background-size: 100% 100%;
   margin: 0.1rem auto;
 }
 .share-tip{
   display: none;
-  width: 100%;
-  height: 2.5rem;
-  position: absolute;
-  top: 0.2rem;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 100;
-}
-.share-per{
-  background: url(../images/share-per.png) no-repeat 0 0;
+  background: url(../images/share.jpg) no-repeat 0 0;
   background-size: 100% 100%;
   width: 3.2rem;
-  height: 1.725rem;
-}
-.share-text{
-  background: url(../images/share-text.png) no-repeat 0 0;
-  background-size: 100% 100%;
-  width: 2.03rem;
-  height: 0.3rem;
-  margin: 0.1rem auto;
+  height: 4.21rem;
+  position: absolute;
+  top: 0rem;
+  left: 0;
+  right: 0;
+  z-index: 100;
 }
