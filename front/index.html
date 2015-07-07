@@ -13,16 +13,20 @@
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 	<link rel="stylesheet" href="./css/main.css" type="text/css" />
   <link rel="stylesheet" type="text/css" href="./css/animate.css">
+  <div class="load-bg">
+    <div class="load-circle spin"></div>
+  </div>
 	<script>
     window.onload = function() {
+      var circle = document.getElementsByClassName("load-bg")
+      document.body.removeChild(circle[0]);
       document.documentElement.style.fontSize = 100*innerWidth/320 + 'px'
       addEventListener('resize', function(){
         document.documentElement.style.fontSize = 100*innerWidth/320 + 'px'
       });
-      // window.App.router.navigate("welcome");
     }
   </script>
-  
+
   <div style="display:none">
     <img src="./images/fonts.png" />
     <img src="./images/loading.gif" />
@@ -133,9 +137,8 @@
   <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
   <script type="text/javascript" src="./js/zepto.min.js"></script>
 	<script type="text/javascript" src="./js/main.js"></script>
-
   <!-- 共同 -->
-  <div class="bg">
+  <div class="bg" >
     <div class="fonts"></div>
     <div class="loading-person"></div>
   </div>

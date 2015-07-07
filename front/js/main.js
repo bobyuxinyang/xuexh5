@@ -271,7 +271,7 @@
       return $('.select-area').show();
     });
     return $downloadBtn.on('click', function() {
-      return location.href = "http://android.myapp.com/myapp/detail.htm?apkName=com.wenba.bangbang";
+      return location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.wenba.bangbang";
     });
   });
 

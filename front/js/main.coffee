@@ -221,6 +221,6 @@ $( ->
     $('.select-area').show()
 
   $downloadBtn.on 'click', ->
-    location.href = "http://android.myapp.com/myapp/detail.htm?apkName=com.wenba.bangbang"
+    location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.wenba.bangbang"
 )
 
