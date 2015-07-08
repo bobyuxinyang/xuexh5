@@ -109,18 +109,10 @@ wxData =
   "desc" : '学X测试：no zuo no die why you try~！no try no high give me five~！',
   "title" : "天啦撸，快点来，这个测试又考智商又测下限哟~！"
 
-$.get 'http://120.25.124.9:7777/wechat/jsapiconf', (data) ->
-  wxData: wxData
-  wx.ready ->
-    # 用户点开右上角popup菜单后，点击分享给好友，会执行下面这个代码
-    wx.onMenuShareTimeline wxData
-    wx.onMenuShareAppMessage wxData
-  wx.config data
-
 $( ->
   $load = $(".loading-page")
   $home = $(".home-page")
-  $start = $('.start-pos')
+  # $start = $('.start-pos')
   $answer1 = $('.answer1')
   $chooseA = $('.chooseA')
   $chooseB = $('.chooseB')
@@ -138,13 +130,21 @@ $( ->
   $start.hide()
   clickTimer = 0
 
+  $.get 'http://120.25.124.9:7777/wechat/jsapiconf', (data) ->
+    wx.ready ->
+      wx.onMenuShareTimeline wxData
+      wx.onMenuShareAppMessage wxData
+      wx.onMenuShareQQ wxData
+      wx.onMenuShareWeibo wxData
+    wx.config data
+
   loading = ->
     count = 0
     timer = setInterval =>
       count += 1
       $loadingCount.text(count)
       clearInterval(timer) if count is 100
-    , 25
+    , 20
 
   init = ->
     loading()
@@ -153,7 +153,7 @@ $( ->
       $home.show()
       setTop()
       danMu()
-    , 1500
+    , 2500
 
     setTimeout =>
       $start.show()

@@ -145,22 +145,10 @@
     "title": "天啦撸，快点来，这个测试又考智商又测下限哟~！"
   };
 
-  $.get('http://120.25.124.9:7777/wechat/jsapiconf', function(data) {
-    ({
-      wxData: wxData
-    });
-    wx.ready(function() {
-      wx.onMenuShareTimeline(wxData);
-      return wx.onMenuShareAppMessage(wxData);
-    });
-    return wx.config(data);
-  });
-
   $(function() {
     var $again, $answer1, $bg, $chooseA, $chooseB, $chooseC, $chooseD, $con, $continuebtn, $downloadBtn, $home, $load, $loadingCount, $shareBtn, $shareTip, $start, clickTimer, init, loading;
     $load = $(".loading-page");
     $home = $(".home-page");
-    $start = $('.start-pos');
     $answer1 = $('.answer1');
     $chooseA = $('.chooseA');
     $chooseB = $('.chooseB');
@@ -177,6 +165,15 @@
     $downloadBtn = $('.download');
     $start.hide();
     clickTimer = 0;
+    $.get('http://120.25.124.9:7777/wechat/jsapiconf', function(data) {
+      wx.ready(function() {
+        wx.onMenuShareTimeline(wxData);
+        wx.onMenuShareAppMessage(wxData);
+        wx.onMenuShareQQ(wxData);
+        return wx.onMenuShareWeibo(wxData);
+      });
+      return wx.config(data);
+    });
     loading = function() {
       var count, timer;
       count = 0;
@@ -188,7 +185,7 @@
             return clearInterval(timer);
           }
         };
-      })(this), 25);
+      })(this), 20);
     };
     init = function() {
       loading();
@@ -199,7 +196,7 @@
           setTop();
           return danMu();
         };
-      })(this), 1500);
+      })(this), 2500);
       return setTimeout((function(_this) {
         return function() {
           $start.show();
