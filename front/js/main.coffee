@@ -130,7 +130,7 @@ $( ->
   $start.hide()
   clickTimer = 0
 
-  $.get 'http://120.25.124.9:7777/wechat/jsapiconf', (data) ->
+  $.get 'http://121.42.11.68:7777/wechat/jsconfig', (data) ->
     wx.ready ->
       wx.onMenuShareTimeline wxData
       wx.onMenuShareAppMessage wxData
