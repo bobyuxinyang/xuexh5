@@ -25,7 +25,7 @@ wechatApi.AccessToken.prototype.isValid = function() {
   return !!this.accessToken && (new Date().getTime()) < (this.expireTime - 3600000)
 }
 
-var WechatApiService = new wechatApi(config.appid, config.secret, function(callback) {
+var WechatApiService = new wechatApi(wechatConfig.appid, wechatConfig.secret, function(callback) {
   RedisService.get(redisAccessTokenKey, function(err, token) {
     if (err) {
       return callback(err)
