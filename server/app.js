@@ -41,8 +41,10 @@ app.use(function(err, req, res, next) {
     })
 })
 
+
 var server = app.listen(config.port, function() {
     console.log('Listening on port %d', server.address().port);
 });
+
 
 module.exports = app;
