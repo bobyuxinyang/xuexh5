@@ -1,16 +1,40 @@
-var OAuth = require('wechat-oauth')
-var Api = require('wechat-api')
-var request = require('superagent')
 
-function Wechat() {
-  this.oauth = null
+var config = require('../config')
+
+var redis = require('redis')
+var redisConfig = config.redis
+
+var client = redis.createClient(redisConfig.port, redisConfig.server)
+client.on('error', function(err) {
+  console.error(err)
+})
+client.on('connect', function(err) {
+  console.info('redis connect..')
+})
+var RedisService = client
+
+
+var wechatApi = require('wechat-api')
+var wechatConfig = config.wechat
+console.log("wechat config is: ", wechatConfig)
+
+var redisAccessTokenKey = 'xuexh5:wechat:token'
+
+//过期时间不准确 提前一点
+wechatApi.AccessToken.prototype.isValid = function() {
+  return !!this.accessToken && (new Date().getTime()) < (this.expireTime - 3600000)
 }
 
-Wechat.prototype.connect = function () {
-  var appid = arguments[0]
-  var secret = arguments[1]
-  this.oauth = new OAuth(appid, secret)
-  this.api = new Api(appid, secret)
-}
+var WechatApiService = new wechatApi(wechatConfig.appid, wechatConfig.secret, function(callback) {
+  RedisService.get(redisAccessTokenKey, function(err, token) {
+    if (err) {
+      return callback(err)
+    }
+    callback(null, JSON.parse(token))
+  })
+}, function(token, callback) {
+  RedisService.set(redisAccessTokenKey, JSON.stringify(token), callback)
+})
 
-module.exports = new Wechat
+
+module.exports = WechatApiService
