@@ -130,7 +130,7 @@ $( ->
   $start.hide()
   clickTimer = 0
 
-  $.get 'http://121.42.11.68:7777/wechat/jsconfig', (data) ->
+  $.get 'http://xuebajun.newbonds.cn:7777/wechat/jsconfig', (data) ->
     wx.config
       debug: true
     
