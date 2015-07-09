@@ -15,7 +15,7 @@ danMu = ->
     $(".danmu#{horizontalArray[i]}").addClass("move#{array[i]}")
 
 setTop = ->
-  top = ["2.8", "3.2", "3.4", "3.6", "3.9", "4.1", "4.5"]
+  top = ["2.8", "3.2", "3.4", "3.6", "3.9", "4.0", "4.3"]
   array = top.sort ->
     0.5 - Math.random()
   for i in [0...7]
@@ -131,12 +131,29 @@ $( ->
   clickTimer = 0
 
   $.get 'http://121.42.11.68:7777/wechat/jsconfig', (data) ->
+    wx.config
+      debug: true
+    
     wx.ready ->
-      wx.onMenuShareTimeline wxData
-      wx.onMenuShareAppMessage wxData
+      alert("haha1")
+      wx.onMenuShareTimeline wxData, 
+        success: ->
+          alert("share1")
+        cancel: ->
+          alert("cancel1")
+      wx.onMenuShareAppMessage wxData, 
+        success: ->
+          alert("share2")
+        cancel: ->
+          alert("cancel1")
       wx.onMenuShareQQ wxData
       wx.onMenuShareWeibo wxData
     wx.config data
+
+  statistic = (eventName)->
+    args = ['_trackEvent'].concat ["学X", "点击", eventName]
+    console.log '事件统计', args
+    _hmt?.push args
 
   loading = ->
     count = 0
@@ -147,6 +164,7 @@ $( ->
     , 20
 
   init = ->
+    statistic("首页")
     loading()
     setTimeout =>
       $load.hide()
@@ -163,6 +181,7 @@ $( ->
   init()
 
   $start.on 'click', ->
+    statistic("点击开始")
     $home.hide()
     $answer1.show()
     Game.status = 1
@@ -200,6 +219,7 @@ $( ->
     , 500
     
   $again.on 'click', ->
+    statistic("再虐一次")
     $('.share-page').hide()
     $('.select-area').hide()
     $('.share-tip').hide()
@@ -211,6 +231,7 @@ $( ->
     init()
 
   $shareBtn.on 'click', ->
+    statistic("嘚瑟一下")
     $('.share-tip').show()
     $('.share-page').hide()
     $('.select-area').hide()
@@ -221,6 +242,7 @@ $( ->
     $('.select-area').show()
 
   $downloadBtn.on 'click', ->
+    statistic("学霸一回")
     location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.wenba.bangbang"
 )
 

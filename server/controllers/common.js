@@ -1,12 +1,10 @@
 var async = require('async')
-var wechatApi = require('../utils/wechat')
-
+var wechatApi = require('../utils/wechat').api
 
 module.exports = {
   wechatJsConfig: function(req, res, next) {
     // console.log(req.headers.referer)
     var debug = req.query.debug
-    console.log("wechatApi is: ", wechatApi)
     wechatApi.getJsConfig({
       debug: !!debug || false,
       jsApiList: [
@@ -24,6 +22,3 @@ module.exports = {
     })
   }
 }
-
-
-

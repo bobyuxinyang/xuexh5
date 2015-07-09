@@ -29,7 +29,7 @@
 
   setTop = function() {
     var array, i, j, results, top;
-    top = ["2.8", "3.2", "3.4", "3.6", "3.9", "4.1", "4.5"];
+    top = ["2.8", "3.2", "3.4", "3.6", "3.9", "4.0", "4.3"];
     array = top.sort(function() {
       return 0.5 - Math.random();
     });
@@ -146,7 +146,7 @@
   };
 
   $(function() {
-    var $again, $answer1, $bg, $chooseA, $chooseB, $chooseC, $chooseD, $con, $continuebtn, $downloadBtn, $home, $load, $loadingCount, $shareBtn, $shareTip, $start, clickTimer, init, loading;
+    var $again, $answer1, $bg, $chooseA, $chooseB, $chooseC, $chooseD, $con, $continuebtn, $downloadBtn, $home, $load, $loadingCount, $shareBtn, $shareTip, $start, clickTimer, init, loading, statistic;
     $load = $(".loading-page");
     $home = $(".home-page");
     $answer1 = $('.answer1');
@@ -166,14 +166,38 @@
     $start.hide();
     clickTimer = 0;
     $.get('http://121.42.11.68:7777/wechat/jsconfig', function(data) {
+      wx.config({
+        debug: true
+      });
       wx.ready(function() {
-        wx.onMenuShareTimeline(wxData);
-        wx.onMenuShareAppMessage(wxData);
+        alert("haha1");
+        wx.onMenuShareTimeline(wxData, {
+          success: function() {
+            return alert("share1");
+          },
+          cancel: function() {
+            return alert("cancel1");
+          }
+        });
+        wx.onMenuShareAppMessage(wxData, {
+          success: function() {
+            return alert("share2");
+          },
+          cancel: function() {
+            return alert("cancel1");
+          }
+        });
         wx.onMenuShareQQ(wxData);
         return wx.onMenuShareWeibo(wxData);
       });
       return wx.config(data);
     });
+    statistic = function(eventName) {
+      var args;
+      args = ['_trackEvent'].concat(["学X", "点击", eventName]);
+      console.log('事件统计', args);
+      return typeof _hmt !== "undefined" && _hmt !== null ? _hmt.push(args) : void 0;
+    };
     loading = function() {
       var count, timer;
       count = 0;
@@ -188,6 +212,7 @@
       })(this), 20);
     };
     init = function() {
+      statistic("首页");
       loading();
       setTimeout((function(_this) {
         return function() {
@@ -206,6 +231,7 @@
     };
     init();
     $start.on('click', function() {
+      statistic("点击开始");
       $home.hide();
       $answer1.show();
       return Game.status = 1;
@@ -247,6 +273,7 @@
     });
     $again.on('click', function() {
       var index;
+      statistic("再虐一次");
       $('.share-page').hide();
       $('.select-area').hide();
       $('.share-tip').hide();
@@ -258,6 +285,7 @@
       return init();
     });
     $shareBtn.on('click', function() {
+      statistic("嘚瑟一下");
       $('.share-tip').show();
       $('.share-page').hide();
       return $('.select-area').hide();
@@ -268,6 +296,7 @@
       return $('.select-area').show();
     });
     return $downloadBtn.on('click', function() {
+      statistic("学霸一回");
       return location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.wenba.bangbang";
     });
   });

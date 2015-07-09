@@ -5,8 +5,8 @@ body {
   -webkit-backface-visibility: hidden;
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: none;
-  -moz-text-size-adjust: none;
-  text-size-adjust: none;
+  -ms-text-size-adjust: none;
+      text-size-adjust: none;
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-user-select: none;
@@ -266,7 +266,7 @@ body {
   position: absolute;
   width: 100%;
   height: 1.5rem;
-  bottom: 0.5rem;
+  bottom: 0.4rem;
   left: 0;
 }
 .question1{
@@ -341,7 +341,7 @@ body {
   position: absolute;
   width: 100%;
   height: 1.5rem;
-  bottom: 0.5rem;
+  bottom: 0.4rem;
   left: 0;
 }
 .question3{
@@ -440,7 +440,7 @@ body {
   position: absolute;
   width: 100%;
   height: 1.5rem;
-  bottom: 0.5rem;
+  bottom: 0.4rem;
   left: 0;
 }
 .select-5{
@@ -495,7 +495,7 @@ body {
   position: absolute;
   width: 100%;
   height: 1.5rem;
-  bottom: 0.5rem;
+  bottom: 0.4rem;
   left: 0;
 }
 .select-6{
@@ -550,7 +550,7 @@ body {
   position: absolute;
   width: 100%;
   height: 1.5rem;
-  bottom: 0.5rem;
+  bottom: 0.4rem;
   left: 0;
 }
 .select-7{
@@ -605,7 +605,7 @@ body {
   position: absolute;
   width: 100%;
   height: 1.5rem;
-  bottom: 0.5rem;
+  bottom: 0.4rem;
   left: 0;
 }
 .select-8{
@@ -660,7 +660,7 @@ body {
   position: absolute;
   width: 100%;
   height: 1.5rem;
-  bottom: 0.5rem;
+  bottom: 0.4rem;
   left: 0;
 }
 .select-9{
@@ -715,7 +715,7 @@ body {
   position: absolute;
   width: 100%;
   height: 1.5rem;
-  bottom: 0.5rem;
+  bottom: 0.4rem;
   left: 0;
 }
 .select-10{
@@ -1077,3 +1077,80 @@ body {
 div, img, a{
   border:none;
 }
+/*@media only screen and (-webkit-min-device-pixel-ratio : 1.5) and (orientation:portrait),
+  only screen and (min-device-pixel-ratio : 1.5)  and (orientation:portrait){
+  .answer-right{
+    width: 1.01rem;
+    height: 1.515rem;
+    background: url(../images/answer-right.png) no-repeat 0 0;
+    background-size: 100% 100%;
+    margin: 0.35rem auto;
+  }
+  .answer-wrong{
+    width: 1.21rem;
+    height: 1.49rem;
+    background: url(../images/answer-wrong.png) no-repeat 0 0;
+    background-size: 100% 100%;
+    margin: 0.35rem auto;
+  }
+  .center{
+    position: absolute;
+    text-align: center;
+    bottom: 0.4rem;
+    width: 100%;
+    height: 0.5rem;
+  }
+  .continue-btn{
+    display: inline-block;
+    width: 0.825rem;
+    height: 0.265rem;
+    background: url(../images/continue.png) no-repeat 0 0;
+    background-size: 100% 100%;
+    margin: 0.2rem auto;
+  }
+  .answer-tip1{
+    width: 2.5rem;
+    height: 0.77rem;
+    background: url(../images/right-answer-1.png) no-repeat center center;
+    background-size: 100% 100%;
+    margin: 0.2rem auto;
+  }
+}*/
+@media screen and (min-device-aspect-ratio: 2/3) {
+  .answer-right{
+    width: 1.01rem;
+    height: 1.515rem;
+    background: url(../images/answer-right.png) no-repeat 0 0;
+    background-size: 100% 100%;
+    margin: 0.35rem auto;
+  }
+  .answer-wrong{
+    width: 1.21rem;
+    height: 1.49rem;
+    background: url(../images/answer-wrong.png) no-repeat 0 0;
+    background-size: 100% 100%;
+    margin: 0.35rem auto;
+  }
+  .center{
+    position: absolute;
+    text-align: center;
+    bottom: 0.4rem;
+    width: 100%;
+    height: 0.5rem;
+  }
+  .continue-btn{
+    display: inline-block;
+    width: 0.825rem;
+    height: 0.265rem;
+    background: url(../images/continue.png) no-repeat 0 0;
+    background-size: 100% 100%;
+    margin: 0.2rem auto;
+  }
+  .answer-tip1{
+    width: 2.5rem;
+    height: 0.77rem;
+    background: url(../images/right-answer-1.png) no-repeat center center;
+    background-size: 100% 100%;
+    margin: 0.2rem auto;
+  }
+} 
