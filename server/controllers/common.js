@@ -3,7 +3,7 @@ var wechatApi = require('../utils/wechat').api
 
 module.exports = {
   wechatJsConfig: function(req, res, next) {
-    // console.log(req.headers.referer)
+    console.log(req.headers.referer)
     var debug = req.query.debug
     wechatApi.getJsConfig({
       debug: !!debug || false,

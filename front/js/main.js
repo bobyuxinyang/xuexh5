@@ -165,25 +165,22 @@ $(function() {
   $start.hide();
   clickTimer = 0;
   $.get('http://xuebajun.newbonds.cn:7777/wechat/jsconfig', function(data) {
-    wx.config({
-      debug: true
-    });
     wx.ready(function() {
-      alert("haha1");
+      console.log("Wechat API READY", wx);
       wx.onMenuShareTimeline(wxData, {
         success: function() {
-          return alert("share1");
+          return console.log("share1");
         },
         cancel: function() {
-          return alert("cancel1");
+          return console.log("cancel1");
         }
       });
       wx.onMenuShareAppMessage(wxData, {
         success: function() {
-          return alert("share2");
+          return console.log("share2");
         },
         cancel: function() {
-          return alert("cancel1");
+          return console.log("cancel1");
         }
       });
       wx.onMenuShareQQ(wxData);

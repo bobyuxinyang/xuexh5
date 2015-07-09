@@ -105,6 +105,7 @@ Game =
 
 wxData =
   "imgUrl" : "http://7xjz8o.com2.z0.glb.qiniucdn.com/xuex-share-icon.jpg",
+  #"imgUrl" : "http://wechat.qiniudn.com/jisukaihu_icon.png",
   "link" : "#{location.href}",
   "desc" : '学X测试：no zuo no die why you try~！no try no high give me five~！',
   "title" : "天啦撸，快点来，这个测试又考智商又测下限哟~！"
@@ -131,21 +132,21 @@ $( ->
   clickTimer = 0
 
   $.get 'http://xuebajun.newbonds.cn:7777/wechat/jsconfig', (data) ->
-    wx.config
-      debug: true
+    # data.debug = true
+    # wx.config data
     
     wx.ready ->
-      alert("haha1")
+      console.log("Wechat API READY", wx)
       wx.onMenuShareTimeline wxData, 
         success: ->
-          alert("share1")
+          console.log("share1")
         cancel: ->
-          alert("cancel1")
+          console.log("cancel1")
       wx.onMenuShareAppMessage wxData, 
         success: ->
-          alert("share2")
+          console.log("share2")
         cancel: ->
-          alert("cancel1")
+          console.log("cancel1")
       wx.onMenuShareQQ wxData
       wx.onMenuShareWeibo wxData
     wx.config data
